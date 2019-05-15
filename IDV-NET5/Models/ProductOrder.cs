@@ -5,6 +5,6 @@ namespace IDVNET5.Models
     {
         public int Id { get; set; }
         public int IdProduct { get; set; }
-        public int NbProduct { get; set; }
+        public int Quantity { get; set; }
     }
 }

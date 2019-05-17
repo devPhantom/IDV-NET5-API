@@ -3,8 +3,8 @@ namespace IDVNET5.Models
 {
     public class ProductOrder
     {
-        public int Id { get; set; }
-        public int IdProduct { get; set; }
+        public long Id { get; set; }
+        public long IdProduct { get; set; }
         public int Quantity { get; set; }
     }
 }

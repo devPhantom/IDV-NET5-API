@@ -8,5 +8,6 @@ namespace IDVNET5.Models
         public int Id { get; set; }
         public int IdUser { get; set; }
         public List<ProductOrder> ProductList { get; set; }
-    }
+        public DateTime Date { get; set; }
+        public string Status { get; set; }
 }

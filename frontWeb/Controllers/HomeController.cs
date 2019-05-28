@@ -15,19 +15,14 @@ namespace frontWeb.Controllers
             return View();
         }
 
-        public IActionResult Product()
+        public IActionResult Details()
         {
-            return View();
+            return View("Detail");
         }
 
-        public IActionResult Detail()
+        public IActionResult Card()
         {
-            return View();
-        }
-
-        public IActionResult Cart()
-        {
-            return View();
+            return View("Card");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -71,5 +71,31 @@ namespace IDVNET5.Controllers
             return product;
         }
 
+        // POST:  api/Product
+        [HttpPost]
+        public async Task<ActionResult<Order>> CreateProduct(Product product)
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+        }
+
+        // DELETE:  api/Product/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(long id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

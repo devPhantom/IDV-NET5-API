@@ -8,7 +8,7 @@ namespace IDVNET5.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly OrderContext _context;
+        private readonly DatabaseContext _context;
 
         public OrderController()
         {

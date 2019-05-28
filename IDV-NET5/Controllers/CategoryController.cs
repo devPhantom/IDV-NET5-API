@@ -12,9 +12,9 @@ namespace IDVNET5.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryContext _context;
+        private readonly DatabaseContext _context;
 
-        public CategoryController(CategoryContext context)
+        public CategoryController(DatabaseContext context)
         {
             _context = context;
 

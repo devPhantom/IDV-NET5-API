@@ -6,7 +6,7 @@ namespace IDVNET5.Controllers
 {
     public class ProductOrderController : ControllerBase
     {
-        private readonly ProductOrderContext _context;
+        private readonly DatabaseContext _context;
 
         public ProductOrderController()
         {

@@ -12,9 +12,9 @@ namespace IDVNET5.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductContext _context;
+        private readonly DatabaseContext _context;
 
-        public ProductController(ProductContext context)
+        public ProductController(DatabaseContext context)
         {
             _context = context;
 

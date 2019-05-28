@@ -8,7 +8,7 @@ namespace IDVNET5.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserContext _context;
+        private readonly DatabaseContext _context;
 
         public UserController()
         {

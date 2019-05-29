@@ -52,16 +52,19 @@ namespace IDVNET5.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(int offset = 0, int limit = 50)
         {
-            return await _context.Products.ToListAsync();
+            var products = await _context.Products.OrderBy(x => x.Id).Skip(offset).Take(limit).ToListAsync();
+
+            return products;
         }
 
         // GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(long id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id).;
+
 
             if (product == null)
             {

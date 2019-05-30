@@ -63,7 +63,7 @@ namespace IDVNET5.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(long id)
         {
-            var product = await _context.Products.FindAsync(id).;
+            var product = await _context.Products.FindAsync(id);
 
 
             if (product == null)

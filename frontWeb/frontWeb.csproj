@@ -20,5 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
 </Project>

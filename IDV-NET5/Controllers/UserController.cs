@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace IDVNET5.Controllers
 {
@@ -34,6 +37,7 @@ namespace IDVNET5.Controllers
             return await _context.Users.ToListAsync();
         }
 
+        [Authorize]
         // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
@@ -46,6 +50,28 @@ namespace IDVNET5.Controllers
             }
 
             return user;
+        }
+
+        [Authorize]
+        // GET: api/User/5
+        [HttpGet("me")]
+        public async Task<ActionResult<User>> GetCurrentUser()
+        {
+            var mail = this.User.FindFirstValue(ClaimTypes.Email);
+
+            if(null == mail)
+            {
+                return NotFound();
+            }
+
+            var currentUser = await _context.Users.FirstOrDefaultAsync(user => user.Mail == mail);
+
+            if (currentUser == null)
+            {
+                return NotFound();
+            }
+
+            return currentUser;
         }
 
         // POST:  api/User

@@ -18,12 +18,10 @@ namespace IDVNET5.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string username, string password)
+        public async Task<IActionResult> Login(string mail, string password)
         {
-            if (!IsValidUsernameAndPasswod(username, password))
-                return BadRequest();
-
-            var user = GetUserFromUsername(username);
+        
+            var user = GetUserFromMail(mail);
 
             if(null == user)
             {
@@ -32,7 +30,7 @@ namespace IDVNET5.Controllers
 
             var claimsIdentity = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Email, user.Mail),
             }, 
             "Cookies");
 
@@ -49,9 +47,9 @@ namespace IDVNET5.Controllers
             return NoContent();
         }
 
-        private User GetUserFromUsername(string username)
+        private User GetUserFromMail(string mail)
         {
-            return _context.Users.FirstOrDefault(user => user.Username == username);
+            return _context.Users.FirstOrDefault(user => user.Mail == mail);
         }
 
         private bool IsValidUsernameAndPasswod(string username, string password)

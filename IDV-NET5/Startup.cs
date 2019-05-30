@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,6 +39,7 @@ namespace IDV_NET5
             }).AddCookie("Cookies", options => {
                 options.Cookie.Name = "auth_cookie";
                 options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.Expiration = TimeSpan.FromHours(5);
                 options.Events = new CookieAuthenticationEvents
                 {
                     OnRedirectToLogin = redirectContext =>
@@ -47,6 +49,7 @@ namespace IDV_NET5
                     }
                 };
             });
+
             services.AddCors();
         }
 
@@ -63,7 +66,6 @@ namespace IDV_NET5
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
             app.UseCors(policy =>
             {
                 policy.AllowAnyHeader();
@@ -73,6 +75,7 @@ namespace IDV_NET5
             });
 
             app.UseAuthentication();
+            app.UseMvc();
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using frontWeb.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +22,6 @@ namespace frontWeb.Controllers
             {
                 client.BaseAddress = new Uri(Baseurl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Sending request
                 HttpResponseMessage Res = await client.GetAsync($"Product?offset={page}");

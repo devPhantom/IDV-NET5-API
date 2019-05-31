@@ -13,7 +13,7 @@ namespace frontWeb.Controllers
 {
     public class LoginController : Controller
     {
-        [HttpGet]
+        [HttpGet("/Login")]
         public IActionResult Index()
         {
             return View();

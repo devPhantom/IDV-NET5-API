@@ -37,7 +37,6 @@ namespace IDVNET5.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        [Authorize]
         // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
@@ -76,12 +75,30 @@ namespace IDVNET5.Controllers
 
         // POST:  api/User
         [HttpPost]
-        public async Task<ActionResult<User>> CreateUser(User user)
+        public async Task<ActionResult<User>> CreateUser([FromBody]User user)
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<User>> UpdateUser([FromBody]User user)
+        {
+            var find = await _context.Users.FindAsync(user.Id);
+
+            if (find == null)
+            {
+                return NotFound();
+            }
+            find.Mail = user.Mail;
+            find.Username = user.Username;
+            find.Password = user.Password;
+
+            await _context.SaveChangesAsync();
+
+            return find;
         }
 
         // DELETE:  api/User/5

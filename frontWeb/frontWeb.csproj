@@ -17,6 +17,9 @@
     <Content Remove="Views\Home\Privacy.cshtml" />
     <Content Remove="Views\Home\product.cshtml" />
     <Content Remove="Views\Home\Cart.cshtml" />
+    <Content Remove="wwwroot\images\applewatch.jpeg" />
+    <Content Remove="wwwroot\images\iphone.jpeg" />
+    <Content Remove="wwwroot\images\ipad.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />

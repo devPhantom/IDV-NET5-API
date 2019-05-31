@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace frontWeb.Models
+{
+    public class Order
+    {
+        public int Id { get; set; }
+        public int IdUser { get; set; }
+        public List<ProductOrder> ProductList { get; set; }
+        public DateTime Date { get; set; }
+        public string Status { get; set; }
+    }
+}

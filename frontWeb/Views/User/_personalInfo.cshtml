@@ -1,0 +1,24 @@
+﻿@model frontWeb.Models.User
+
+<div class="leave-comment">
+    <p id="textform"></p>
+    <input class="sizefull s-text7 p-l-22 p-r-22" type="hidden" id="userId" value="@Model.Id">
+    <div class="bo4 of-hidden size15 m-b-20">
+        <input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="mail" value="@Model.Mail">
+    </div>
+
+    <div class="bo4 of-hidden size15 m-b-20">
+        <input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="username" value="@Model.Username">
+    </div>
+
+    <div class="bo4 of-hidden size15 m-b-20">
+        <input class="sizefull s-text7 p-l-22 p-r-22" type="password" id="password" value="@Model.Password">
+    </div>
+
+    <div class="w-size25">
+        <!-- Button -->
+        <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" onclick="updateAccount()">
+            Mettre a jour
+        </button>
+    </div>
+</div>

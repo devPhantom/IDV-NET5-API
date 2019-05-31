@@ -1,0 +1,60 @@
+﻿@model frontWeb.Models.ViewModel.AccountModel
+<!-- Title Page -->
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-color: #d2d2d2;">
+    <h2 class="l-text2 t-center">
+        Mon Compte
+    </h2>
+</section>
+
+<!-- content page -->
+<section class="bgwhite p-t-66 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 p-b-30" id="PersonalInfo">
+                <div class="leave-comment">
+                    <p id="textform"></p>
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="hidden" id="userId" value="@Model.User.Id">
+                    <div class="bo4 of-hidden size15 m-b-20">
+                        <input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="mail" value="@Model.User.Mail">
+                    </div>
+
+                    <div class="bo4 of-hidden size15 m-b-20">
+                        <input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="username" value="@Model.User.Username">
+                    </div>
+
+                    <div class="bo4 of-hidden size15 m-b-20">
+                        <input class="sizefull s-text7 p-l-22 p-r-22" type="password" id="password" value="@Model.User.Password">
+                    </div>
+
+                    <div class="w-size25">
+                        <!-- Button -->
+                        <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" onclick="updateAccount()">
+                            Mettre a jour
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">function updateAccount() {
+        $.ajax({ url: '/UpdateAccount', method: "PUT", data: {
+            id: $("#userId").val(),
+            mail: $("#mail").val(),
+            username: $("#username").val(),
+            password: $("#password").val(),
+        } })
+            .then(function (data) {
+                console.log(data);
+                var div = $("#PersonalInfo");
+                div.html(data);
+                $("#textform").attr("style", "color: #155724;");
+                $("#textform").text("Les informations ont ete enregistrees avec succes.");
+            }, function (err) {
+                console.log("err: " + err.statusText)
+                $("#textform").text("Une erreur est survenue");
+                $("#textform").attr("style", "background-color: #red;");
+            });
+    }
+</script>

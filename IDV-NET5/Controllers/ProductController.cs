@@ -83,6 +83,15 @@ namespace IDVNET5.Controllers
             return product;
         }
 
+        // POST: api/Product/Search
+        [HttpPost("Search")]
+        public async Task<ActionResult<IEnumerable<Product>>> SearchProducts([FromBody]Search search)
+        {
+            var products = await _context.Products.Where(p => EF.Functions.Like(p.Name, $"%{search.Query}%")).OrderBy(x => x.Id).ToListAsync();
+
+            return products;
+        }
+
         // POST:  api/Product
         [HttpPost]
         public async Task<ActionResult<Order>> CreateProduct(Product product)

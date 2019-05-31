@@ -21,10 +21,10 @@ namespace IDVNET5.Controllers
             if (_context.Categories.Count() == 0)
             {
                 // Create list of Products if collection is empty,
-                _context.Categories.Add(new Category { Name = "MacBook" });
-                _context.Categories.Add(new Category { Name = "Iphone" });
-                _context.Categories.Add(new Category { Name = "Ipad" });
-                _context.Categories.Add(new Category { Name = "Montre" });
+                _context.Categories.Add(new Category { Name = "MacBook", Img_Url = "/images/macbook.jpg" });
+                _context.Categories.Add(new Category { Name = "Iphone", Img_Url = "/images/iphone.jpeg" });
+                _context.Categories.Add(new Category { Name = "Ipad", Img_Url = "/images/ipad.jpeg" });
+                _context.Categories.Add(new Category { Name = "Montre", Img_Url = "/images/applewatch.jpeg" });
                 _context.SaveChanges();
             }
         }

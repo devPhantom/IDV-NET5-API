@@ -24,5 +24,9 @@
     <Folder Include="Views\Login\" />
     <Folder Include="Helper\" />
     <Folder Include="Views\Product\" />
+    <Folder Include="Models\ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\HomeProductCategory.cs" />
   </ItemGroup>
 </Project>

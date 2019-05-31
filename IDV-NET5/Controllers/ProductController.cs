@@ -51,10 +51,19 @@ namespace IDVNET5.Controllers
 
 
         // GET: api/Product
-        [HttpGet]
+        [HttpGet("{offset?}/{limit?}")]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts(int offset = 0, int limit = 50)
         {
             var products = await _context.Products.OrderBy(x => x.Id).Skip(offset).Take(limit).ToListAsync();
+
+            return products;
+        }
+
+        // GET: api/Product
+        [HttpGet("Category/{idCategory}/{offset?}/{limit?}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(long IdCategory, int offset = 0, int limit = 50)
+        {
+            var products = await _context.Products.Where(a => a.IdCategory == IdCategory).OrderBy(x => x.Id).Skip(offset).Take(limit).ToListAsync();
 
             return products;
         }

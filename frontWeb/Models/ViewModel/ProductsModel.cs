@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 namespace frontWeb.Models.ViewModel
 {
-    public class HomeModel
+    public class ProductsModel
     {
-        public HomeModel()
+        public ProductsModel()
         {
-            //ProductList = new List<Product>();
+            ProductList = new List<Product>();
             Categories = new List<Category>();
         }
 
-        //public List<Product> ProductList { get; set; }
+        public List<Product> ProductList { get; set; }
         public List<Category> Categories { get; set; }
+        public long IdCategory { get; set; } = 0;
 
     }
 }
